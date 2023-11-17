@@ -1,0 +1,10 @@
+<!-- app/views/artists/index.html.erb -->
+
+<h1>Artists</h1>
+
+<ul>
+  <% @artist.each do |artist| %>
+    <li><%= artist.name %></li>
+    <!-- Replace "name" with the actual attribute you want to display -->
+  <% end %>
+</ul>

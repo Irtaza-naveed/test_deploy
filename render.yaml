@@ -1,0 +1,19 @@
+databases:
+  - name: postgres
+    ipAllowList: []
+    databaseName: test_deploy_production
+    user: deploy
+
+services:
+  - type: web
+    name: test_deploy
+    env: ruby
+    buildCommand: "./render-build.sh"
+    startCommand: "bundle exec rails s"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
